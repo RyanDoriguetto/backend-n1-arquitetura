@@ -6,11 +6,11 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-let itens = []; // agora é let (pode mudar)
+let itens = [];
 
 app.post('/itens', (req, res) => {
   const item = req.body;
-  item.id = itens.length + 1; // Aqui é item, não novoItem
+  item.id = itens.length + 1;
   itens.push(item);
   res.status(201).send('Item criado!');
 });
@@ -22,9 +22,9 @@ app.get('/itens', (req, res) => {
 app.put('/itens/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const novoItem = req.body;
-  const index = itens.findIndex(item => item.id === id); // procura pelo ID correto
+  const index = itens.findIndex(item => item.id === id);
   if (index !== -1) {
-    novoItem.id = id; // mantém o mesmo id
+    novoItem.id = id;
     itens[index] = novoItem;
     res.send('Item atualizado!');
   } else {
